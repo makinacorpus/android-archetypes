@@ -29,7 +29,7 @@ Use Maven to install these archetypes in your local repository :
 	mvn clean install
 
 ## android-quickstart archetype
-This archetype creates a simple Android application ready to be deployed on an android device. To initiate this Android project :
+This archetype creates a simple Android application ready to be deployed on an Android device. To initiate this Android project :
 
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-quickstart \
@@ -56,6 +56,15 @@ Once generated, your application is ready to be built. Plug an Android dev phone
 	cd my-android-application
 	mvn clean install
 
-To deploy and launch the application :
+or with Gradle :
+
+	cd my-android-application
+	gradle clean build
+
+To deploy and launch the application with Maven :
 
 	mvn clean install android:deploy android:run
+
+or with Gradle (only deploy) :
+
+	gradle installDebug

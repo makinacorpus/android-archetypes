@@ -17,21 +17,23 @@
 	</properties>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>android</groupId>
 			<artifactId>android</artifactId>
 			<version>${platform.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		#set($platformValueString = ${platform})
-		#set($Integer = 0)
-		#if($Integer.parseInt($platformValueString) gt 10)
+#set($platformValueString = ${platform})
+#set($Integer = 0)
+#if($Integer.parseInt($platformValueString) gt 10)
 		<dependency>
 			<groupId>android.support</groupId>
 			<artifactId>compatibility-v4</artifactId>
 			<version>18</version>
 		</dependency>
-		#end
+#end
+
 	</dependencies>
 
 	<build>
