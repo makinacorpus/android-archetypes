@@ -1,0 +1,28 @@
+<document xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://maven.apache.org/changes/1.0.0"
+	xsi:schemaLocation="http://maven.apache.org/changes/1.0.0 http://maven.apache.org/xsd/changes-1.0.0.xsd">
+
+	<properties>
+		<title>Changelog</title>
+		<author email="sebastien.grimault@makina-corpus.com">S. Grimault</author>
+	</properties>
+
+	<body>
+
+		<release
+			date="2013-10-10"
+			description="Tag 0.0.1"
+			version="0.0.1">
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="add">
+				Initial release.
+			</action>
+
+		</release>
+
+	</body>
+
+</document>
