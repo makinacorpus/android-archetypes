@@ -1,5 +1,5 @@
 # android-archetypes
-Provides Maven archetypes for Android to quickly bootstrap a Maven project and start developing an Android application (for instance juste one).
+Provides Maven archetypes for Android to quickly bootstrap a Maven project and start developing an Android application.
 
 All artifacts are based on the android-maven-plugin [http://code.google.com/p/maven-android-plugin/](http://code.google.com/p/maven-android-plugin/). It currently uses the 3.7.0 version.
 
@@ -24,7 +24,7 @@ Install [maven-android-sdk-deployer](https://github.com/mosabua/maven-android-sd
 	mvn install -P 4.3
 
 ## Installation
-Use Maven to install these archetypes in your local repository :
+Use Maven to install these archetypes in your local Maven repository :
 
 	mvn clean install
 
@@ -34,8 +34,9 @@ This archetype creates a simple Android application ready to be deployed on an A
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-quickstart \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.0.2 \
+		-DarchetypeVersion=0.0.3 \
 		-DarchetypeCatalog=local \
+		-DarchetypeRepository=local \
 		-DgroupId=your.company \
 		-DartifactId=my-android-application \
 		-Dversion=0.1 \
@@ -68,3 +69,37 @@ To deploy and launch the application with Maven :
 or with Gradle (only deploy) :
 
 	gradle installDebug
+
+## android-simple-project
+This archetype creates a multi-module project containing the Android application and a project for testing this application (instrumentation tests) :
+
+	mvn archetype:generate \
+		-DarchetypeArtifactId=android-simple-project \
+		-DarchetypeGroupId=com.makina.android.archetypes \
+		-DarchetypeVersion=0.0.3 \
+		-DarchetypeCatalog=local \
+		-DarchetypeRepository=local \
+		-DgroupId=your.company \
+		-DartifactId=my-android-application \
+		-Dversion=0.1 \
+		-Dplatform=15 \
+		-DinteractiveMode=false
+
+where properties :
+
+* `-DgroupId` : your Maven project groupId
+* `-DartifactId` : the name of your Maven project
+* `-Dversion` : the first version number of your Maven project
+* `-Dplatform` : the targeted Android platform version to use (default : 15, Android 4.0.3)
+
+The Android application package use by default the given `groupId`.
+
+Once generated, your application is ready to be built and tested. Plug an Android dev phone ([USB debugging must be enabled in Developer options settings](http://developer.android.com/tools/device.html#setting-up)) and execute the following commands :
+
+	cd my-android-application
+	mvn clean install
+
+To deploy and launch the application with Maven :
+
+	cd my-android-application
+	mvn clean install android:deploy android:run

@@ -10,8 +10,8 @@
 		<version>0.0.3</version>
 	</parent>
 
-	<artifactId>android-quickstart</artifactId>
-	<name>Android Archetype - android-quickstart</name>
-	<description>Creates a simple skeleton for an Android application</description>
+	<artifactId>android-simple-project</artifactId>
+	<name>Android Archetype - android-simple-project</name>
+	<description>Creates a skeleton for an Android application with instrumentation tests and ready-to-publish application on releases</description>
 
 </project>

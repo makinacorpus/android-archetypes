@@ -10,6 +10,20 @@
 	<body>
 
 		<release
+			date="2013-10-14"
+			description="Tag 0.0.3"
+			version="0.0.3">
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="add">
+				New Maven archetype : android-simple-project.
+			</action>
+
+		</release>
+
+		<release
 			date="2013-10-11"
 			description="Tag 0.0.2"
 			version="0.0.2">
@@ -33,6 +47,7 @@
 				due-to-email="sebastien.grimault@makina-corpus.com"
 				type="add">
 				Initial release.
+				First Android archetype : android-quickstart.
 			</action>
 
 		</release>

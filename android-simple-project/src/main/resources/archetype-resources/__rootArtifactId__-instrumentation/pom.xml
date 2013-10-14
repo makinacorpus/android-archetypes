@@ -4,17 +4,18 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>${groupId}</groupId>
+		<artifactId>${rootArtifactId}-parent</artifactId>
+		<version>${version}</version>
+	</parent>
+
 	<groupId>${groupId}</groupId>
 	<artifactId>${artifactId}</artifactId>
 	<version>${version}</version>
 	<packaging>apk</packaging>
-	<name>${artifactId}</name>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform.version>#if(${platform} eq 3)1.5_r4#elseif(${platform} eq 4)1.6_r3#elseif(${platform} eq 7)2.1_r3#elseif(${platform} eq 8)2.2_r3#elseif(${platform} eq 10)2.3.3_r2#elseif(${platform} eq 11)3.0_r2#elseif(${platform} eq 12)3.1_r3#elseif(${platform} eq 13)3.2_r1#elseif(${platform} eq 14)4.0_r3#elseif(${platform} eq 15)4.0.3_r3#elseif(${platform} eq 16)4.1.2_r4#elseif(${platform} eq 17)4.2.2_r2#elseif(${platform} eq 18)4.3_r2#end</platform.version>
-		<android.plugin.version>3.7.0</android.plugin.version>
-	</properties>
+	<name>${artifactId} - Instrumentation Tests</name>
 
 	<dependencies>
 
@@ -33,6 +34,27 @@
 		</dependency>
 #end
 
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>${groupId}</groupId>
+			<artifactId>${rootArtifactId}</artifactId>
+			<type>apk</type>
+			<version>${version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>${groupId}</groupId>
+			<artifactId>${rootArtifactId}</artifactId>
+			<type>jar</type>
+			<version>${version}</version>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -42,7 +64,7 @@
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 				<artifactId>android-maven-plugin</artifactId>
 				<version>${android.plugin.version}</version>
-					<extensions>true</extensions>
+				<extensions>true</extensions>
 				<configuration>
 					<sdk>
 						<platform>${platform}</platform>

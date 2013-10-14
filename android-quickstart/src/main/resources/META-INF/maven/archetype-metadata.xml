@@ -49,22 +49,8 @@
 			encoding="UTF-8">
 			<directory></directory>
 			<includes>
-				<include>*.xml</include>
-			</includes>
-		</fileSet>
-		<fileSet
-			filtered="true"
-			encoding="UTF-8">
-			<directory></directory>
-			<includes>
-				<include>*.gradle</include>
-			</includes>
-		</fileSet>
-		<fileSet
-			filtered="true"
-			encoding="UTF-8">
-			<directory></directory>
-			<includes>
+				<include>AndroidManifest.xml</include>
+				<include>build.gradle</include>
 				<include>*.properties</include>
 			</includes>
 		</fileSet>
