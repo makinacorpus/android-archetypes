@@ -32,7 +32,7 @@
 				dev="Sebastien Grimault"
 				due-to-email="sebastien.grimault@makina-corpus.com"
 				type="add">
-				Adding Gradle build support.
+				Adding Gradle build support for android-quickstart archetype.
 			</action>
 
 		</release>

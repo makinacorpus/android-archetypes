@@ -1,7 +1,8 @@
-package ${package}.test;
+package ${package}.test.ui;
 
 import android.test.ActivityInstrumentationTestCase2;
-import ${package}.MainActivity;
+
+import ${package}.ui.MainActivity;
 
 public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActivity>
 {
@@ -11,13 +12,14 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
 #if($Integer.parseInt($platform) > 7)
 		super(MainActivity.class);
 #else
-		super("${package}", MainActivity.class);
+		super("${package}.ui", MainActivity.class);
 #end
 	}
 
 	public void testActivity()
 	{
 		MainActivity mainActivity = getActivity();
+
 		assertNotNull(mainActivity);
 	}
 }

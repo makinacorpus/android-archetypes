@@ -11,9 +11,7 @@
 		<version>${version}</version>
 	</parent>
 
-	<groupId>${groupId}</groupId>
 	<artifactId>${artifactId}</artifactId>
-	<version>${version}</version>
 	<packaging>apk</packaging>
 	<name>${artifactId} - Application</name>
 
@@ -22,7 +20,6 @@
 		<dependency>
 			<groupId>android</groupId>
 			<artifactId>android</artifactId>
-			<version>${platform.version}</version>
 			<scope>provided</scope>
 		</dependency>
 #set($Integer = 0)
@@ -30,9 +27,19 @@
 		<dependency>
 			<groupId>android.support</groupId>
 			<artifactId>compatibility-v4</artifactId>
-			<version>18</version>
 		</dependency>
 #end
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.robolectric</groupId>
+			<artifactId>robolectric</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
@@ -40,19 +47,38 @@
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${src.java.version}</source>
+					<target>${src.java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 				<artifactId>android-maven-plugin</artifactId>
-				<version>${android.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
 					<sdk>
 						<platform>${platform}</platform>
 					</sdk>
+					<undeployBeforeDeploy>true</undeployBeforeDeploy>
 					<manifest>
 						<debuggable>true</debuggable>
 						<versionCodeAutoIncrement>true</versionCodeAutoIncrement>
 						<versionName>${project.version}</versionName>
 					</manifest>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/Test*.java</exclude>
+					</excludes>
+					<argLine>-Xmx1024m</argLine>
 				</configuration>
 			</plugin>
 		</plugins>
