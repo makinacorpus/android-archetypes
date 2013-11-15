@@ -23,7 +23,7 @@
 			<scope>provided</scope>
 		</dependency>
 #set($Integer = 0)
-#if($Integer.parseInt($platform) gt 10)
+#if($Integer.parseInt($minSdkVersion) le 10)
 		<dependency>
 			<groupId>android.support</groupId>
 			<artifactId>compatibility-v4</artifactId>
@@ -76,7 +76,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<sdk>
-						<platform>${platform}</platform>
+						<platform>${targetSdkVersion}</platform>
 					</sdk>
 					<manifest>
 						<debuggable>true</debuggable>

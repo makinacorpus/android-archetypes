@@ -5,8 +5,11 @@
 	name="android-quickstart">
 
 	<requiredProperties>
-		<requiredProperty key="platform">
-			<defaultValue>15</defaultValue>
+		<requiredProperty key="minSdkVersion">
+			<defaultValue>10</defaultValue>
+		</requiredProperty>
+		<requiredProperty key="targetSdkVersion">
+			<defaultValue>18</defaultValue>
 		</requiredProperty>
 	</requiredProperties>
 

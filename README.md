@@ -10,8 +10,7 @@ Download the latest Android SDK from
 From Android SDK, install at least the following packages :
 
 * Tools (all packages)
-* Latest Android API (currently : 18)
-* Android 4.0.3 (API 15)
+* Android 4.3 (API 18)
 * Android 2.3.3 (API 10)
 * Extras (all packages according to your platform)
 
@@ -20,7 +19,6 @@ Install [maven-android-sdk-deployer](https://github.com/mosabua/maven-android-sd
 	git clone https://github.com/mosabua/maven-android-sdk-deployer.git
 	cd maven-android-sdk-deployer/
 	mvn install -P 2.3.3
-	mvn install -P 4.0.3
 	mvn install -P 4.3
 
 ## Installation
@@ -34,13 +32,12 @@ This archetype creates a simple Android application ready to be deployed on an A
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-quickstart \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.0.4 \
+		-DarchetypeVersion=0.0.5 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
 		-DartifactId=my-android-application \
 		-Dversion=0.1 \
-		-Dplatform=15 \
 		-DinteractiveMode=false
 
 where properties :
@@ -48,7 +45,10 @@ where properties :
 * `-DgroupId` : your Maven project groupId
 * `-DartifactId` : the name of your Maven project
 * `-Dversion` : the first version number of your Maven project
-* `-Dplatform` : the targeted Android platform version to use (default : 15, Android 4.0.3)
+
+You can define two optional properties :
+* `-DminSdkVersion` : the minimum API Level required for the application to run (default : 10, Android 2.3.3)
+* `-DtargetSdkVersion` : the targeted Android platform version to use (default : 18, Android 4.3)
 
 The Android application package use by default the given `groupId`.
 
@@ -76,13 +76,12 @@ This archetype creates a multi-module project containing the Android application
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-simple-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.0.4 \
+		-DarchetypeVersion=0.0.5 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
 		-DartifactId=my-android-application \
 		-Dversion=0.1 \
-		-Dplatform=15 \
 		-DinteractiveMode=false
 
 where properties :
@@ -90,7 +89,10 @@ where properties :
 * `-DgroupId` : your Maven project groupId
 * `-DartifactId` : the name of your Maven project
 * `-Dversion` : the first version number of your Maven project
-* `-Dplatform` : the targeted Android platform version to use (default : 15, Android 4.0.3)
+
+You can define two optional properties :
+* `-DminSdkVersion` : the minimum API Level required for the application to run (default : 10, Android 2.3.3)
+* `-DtargetSdkVersion` : the targeted Android platform version to use (default : 18, Android 4.3)
 
 The Android application package use by default the given `groupId`.
 

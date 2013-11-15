@@ -11,22 +11,21 @@ buildscript {
 apply plugin: 'android'
 
 dependencies {
-#set($platformValueString = ${platform})
 #set($Integer = 0)
-#if($Integer.parseInt($platformValueString) gt 10)
-	compile group: 'com.android.support', name: 'support-v4', version: '18.0.0'
+#if($Integer.parseInt($minSdkVersion) le 10)
+	compile group: 'com.android.support', name: 'support-v4', version: '19.0.0'
 #end
 }
 
 android {
-	compileSdkVersion 18
+	compileSdkVersion ${targetSdkVersion}
 	buildToolsVersion '18.0.1'
 
 	defaultConfig {
 		versionCode 1
 		versionName '${version}'
 		minSdkVersion 10
-		targetSdkVersion ${platform}
+		targetSdkVersion ${targetSdkVersion}
 	}
 	sourceSets {
 		main {

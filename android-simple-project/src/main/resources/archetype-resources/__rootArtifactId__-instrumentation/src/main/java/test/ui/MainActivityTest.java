@@ -9,7 +9,7 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
 	public MainActivityTest()
 	{
 #set($Integer = 0)
-#if($Integer.parseInt($platform) > 7)
+#if($Integer.parseInt($minSdkVersion) > 7)
 		super(MainActivity.class);
 #else
 		super("${package}.ui", MainActivity.class);

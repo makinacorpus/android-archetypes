@@ -18,7 +18,7 @@
 	<properties>
 		<src.java.version>1.6</src.java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform.version>#if(${platform} eq 3)1.5_r4#elseif(${platform} eq 4)1.6_r3#elseif(${platform} eq 7)2.1_r3#elseif(${platform} eq 8)2.2_r3#elseif(${platform} eq 10)2.3.3_r2#elseif(${platform} eq 11)3.0_r2#elseif(${platform} eq 12)3.1_r3#elseif(${platform} eq 13)3.2_r1#elseif(${platform} eq 14)4.0_r3#elseif(${platform} eq 15)4.0.3_r3#elseif(${platform} eq 16)4.1.2_r4#elseif(${platform} eq 17)4.2.2_r2#elseif(${platform} eq 18)4.3_r2#end</platform.version>
+		<platform.version>#if(${targetSdkVersion} eq 3)1.5_r4#elseif(${targetSdkVersion} eq 4)1.6_r3#elseif(${targetSdkVersion} eq 7)2.1_r3#elseif(${targetSdkVersion} eq 8)2.2_r3#elseif(${targetSdkVersion} eq 10)2.3.3_r2#elseif(${targetSdkVersion} eq 11)3.0_r2#elseif(${targetSdkVersion} eq 12)3.1_r3#elseif(${targetSdkVersion} eq 13)3.2_r1#elseif(${targetSdkVersion} eq 14)4.0_r3#elseif(${targetSdkVersion} eq 15)4.0.3_r3#elseif(${targetSdkVersion} eq 16)4.1.2_r4#elseif(${targetSdkVersion} eq 17)4.2.2_r2#elseif(${targetSdkVersion} eq 18)4.3_r2#end</platform.version>
 		<android.plugin.version>3.7.0</android.plugin.version>
 	</properties>
 
@@ -32,11 +32,11 @@
 				<scope>provided</scope>
 			</dependency>
 #set($Integer = 0)
-#if($Integer.parseInt(${platform}) gt 10)
+#if($Integer.parseInt(${minSdkVersion}) le 10)
 			<dependency>
 				<groupId>android.support</groupId>
 				<artifactId>compatibility-v4</artifactId>
-				<version>18</version>
+				<version>19</version>
 			</dependency>
 #end
 
