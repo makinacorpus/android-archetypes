@@ -32,7 +32,7 @@ This archetype creates a simple Android application ready to be deployed on an A
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-quickstart \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.0.5 \
+		-DarchetypeVersion=0.0.6 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -52,7 +52,7 @@ You can define two optional properties :
 
 The Android application package use by default the given `groupId`.
 
-Once generated, your application is ready to be built. Plug an Android dev phone ([USB debugging must be enabled in Developer options settings](http://developer.android.com/tools/device.html#setting-up)) and execute the following commands :
+Once generated, your application is ready to be built. Start an android emulator or plug an Android dev phone ([USB debugging must be enabled in Developer options settings](http://developer.android.com/tools/device.html#setting-up)) and execute the following commands :
 
 	cd my-android-application
 	mvn clean install
@@ -70,13 +70,15 @@ or with Gradle (only deploy) :
 
 	gradle installDebug
 
+This generated project use [JUnit](https://github.com/junit-team/junit) and [Robolectric](http://robolectric.org/) as default unit test framework.
+
 ## android-simple-project
 This archetype creates a multi-module project containing the Android application and a project for testing this application (instrumentation tests) :
 
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-simple-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.0.5 \
+		-DarchetypeVersion=0.0.6 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -96,7 +98,7 @@ You can define two optional properties :
 
 The Android application package use by default the given `groupId`.
 
-Once generated, your application is ready to be built and tested. Plug an Android dev phone ([USB debugging must be enabled in Developer options settings](http://developer.android.com/tools/device.html#setting-up)) and execute the following commands :
+Once generated, your application is ready to be built and tested. Start an android emulator or plug an Android dev phone ([USB debugging must be enabled in Developer options settings](http://developer.android.com/tools/device.html#setting-up)) and execute the following commands :
 
 	cd my-android-application
 	mvn clean install
@@ -105,3 +107,5 @@ To deploy and launch the application with Maven :
 
 	cd my-android-application
 	mvn clean install android:deploy android:run
+
+This generated project use [JUnit](https://github.com/junit-team/junit) and [Robolectric](http://robolectric.org/) as default unit test framework. It also use [Spoon](http://square.github.io/spoon/) as client library (to snap screenshots at key points during your tests) and as Maven plugin for running all instrumentation tests on multiple devices simultaneously.

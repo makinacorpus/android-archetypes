@@ -45,6 +45,12 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<!-- The Spoon client library for taking screenshots -->
+		<dependency>
+			<groupId>com.squareup.spoon</groupId>
+			<artifactId>spoon-client</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -84,6 +90,22 @@
 						<versionName>${project.version}</versionName>
 					</manifest>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.squareup.spoon</groupId>
+				<artifactId>spoon-maven-plugin</artifactId>
+				<configuration>
+					<title>${project.artifactId}</title>
+					<debug>true</debug>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>integration-test</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

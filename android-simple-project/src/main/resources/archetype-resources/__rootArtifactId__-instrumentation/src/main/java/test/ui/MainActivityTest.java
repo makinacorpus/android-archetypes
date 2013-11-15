@@ -1,6 +1,7 @@
 package ${package}.test.ui;
 
 import android.test.ActivityInstrumentationTestCase2;
+import com.squareup.spoon.Spoon;
 
 import ${package}.ui.MainActivity;
 
@@ -19,6 +20,8 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<MainActiv
 	public void testActivity()
 	{
 		MainActivity mainActivity = getActivity();
+
+		Spoon.screenshot(mainActivity, "initial_state");
 
 		assertNotNull(mainActivity);
 	}
