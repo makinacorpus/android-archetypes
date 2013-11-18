@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.makina.android.archetypes</groupId>
 	<artifactId>android-archetypes</artifactId>
-	<version>0.0.6</version>
+	<version>0.0.7</version>
 	<packaging>pom</packaging>
 
 	<name>Android Archetypes</name>
@@ -16,6 +16,7 @@
 	<modules>
 		<module>android-quickstart</module>
 		<module>android-simple-project</module>
+		<module>android-library-quickstart</module>
 	</modules>
 
 	<organization>
