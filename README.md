@@ -40,7 +40,7 @@ This archetype creates a simple Android application ready to be deployed on an A
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-quickstart \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.0.7 \
+		-DarchetypeVersion=0.0.8 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -91,7 +91,7 @@ This archetype creates a multi-module project containing the Android application
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-simple-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.0.7 \
+		-DarchetypeVersion=0.0.8 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -142,7 +142,7 @@ This archetype creates a simple Android library application ready to be used wit
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-library-quickstart \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.0.7 \
+		-DarchetypeVersion=0.0.8 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
