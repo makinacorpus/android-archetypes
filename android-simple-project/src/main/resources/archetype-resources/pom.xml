@@ -67,6 +67,16 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>properties-maven-plugin</artifactId>
+					<version>1.0-alpha-2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jarsigner-plugin</artifactId>
+					<version>1.2</version>
+				</plugin>
+				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.1</version>
@@ -81,6 +91,17 @@
 					<artifactId>android-maven-plugin</artifactId>
 					<version>${android.plugin.version}</version>
 					<extensions>true</extensions>
+					<configuration>
+						<sdk>
+							<platform>${targetSdkVersion}</platform>
+						</sdk>
+						<undeployBeforeDeploy>true</undeployBeforeDeploy>
+						<manifest>
+							<debuggable>true</debuggable>
+							<versionCodeAutoIncrement>true</versionCodeAutoIncrement>
+							<versionName>${project.version}</versionName>
+						</manifest>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>com.squareup.spoon</groupId>

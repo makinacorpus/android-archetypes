@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>com.makina.android.archetypes</groupId>
 		<artifactId>android-archetypes</artifactId>
-		<version>0.0.7</version>
+		<version>0.0.8</version>
 	</parent>
 
 	<artifactId>android-library-quickstart</artifactId>

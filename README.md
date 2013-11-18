@@ -30,6 +30,8 @@ Install [maven-android-sdk-deployer](https://github.com/mosabua/maven-android-sd
 ## Installation
 Use Maven to install these archetypes in your local Maven repository :
 
+	git clone https://github.com/makinacorpus/android-archetypes.git
+	cd android-archetypes/
 	mvn clean install
 
 ## android-quickstart archetype
@@ -77,6 +79,10 @@ or with Gradle (only deploy) :
 
 	gradle installDebug
 
+To undeploy the application with Maven :
+
+	mvn android:undeploy
+
 This generated project use [JUnit](https://github.com/junit-team/junit) and [Robolectric](http://robolectric.org/) as default unit test framework.
 
 ## android-simple-project archetype
@@ -118,6 +124,18 @@ To deploy and launch the application with Maven :
 
 This generated project use [JUnit](https://github.com/junit-team/junit) and [Robolectric](http://robolectric.org/) as default unit test framework. It also use [Spoon](http://square.github.io/spoon/) as client library (to snap screenshots at key points during your tests) and as Maven plugin for running all instrumentation tests on multiple devices simultaneously.
 
+To undeploy all installed applications (main application and instrumentation tests application) with Maven :
+
+	cd my-android-application
+	mvn android:undeploy
+	cd ../my-android-application-instrumentation
+	mvn android:undeploy
+
+or from the parent pom (the application package name must be specified) :
+
+	mvn android:undeploy -Dandroid.package=your.company.myapp
+	mvn android:undeploy -Dandroid.package=your.company.myapp.test
+
 ## android-library-quickstart archetype
 This archetype creates a simple Android library application ready to be used with another Android project application. To initiate this Android library project :
 
@@ -151,6 +169,42 @@ Once generated, your library is ready to be built :
 	mvn clean install
 
 This generated project use [JUnit](https://github.com/junit-team/junit) and [Robolectric](http://robolectric.org/) as default unit test framework.
+
+## Perform a release build (signed and zipaligned APK)
+**android-quickstart** and **android-simple-project** archetypes offers also a *`release`* profile to generate a signed and zipaligned APK.
+By default the application is built in "debug mode". This means the generated class constant `BuildCongig.DEBUG` and Android Manifest attribute `android:debuggable` are set to `true` and the APK is signed with the default debug key (`~/.android/debug.keystore`).
+
+A release type build would be necessary for publication of the application to the [Play Store](https://play.google.com/store?hl=fr) and the necessary steps for it is configured. The following preparation for the execution is necessary :
+
+* Create your private key following the instructions at [http://developer.android.com/guide/publishing/app-signing.html#cert](http://developer.android.com/tools/publishing/app-signing.html#cert)
+* Create a `sign.properties` file in the root folder of your application project (not the instrumentation tests project) like this :
+
+		sign.keystore=/absolute/path/to/your/keystore
+		sign.alias=youralias
+		sign.keypass=keypass
+		sign.storepass=storepass
+
+After this preparation, the release build can be invoked with the following command :
+
+	mvn clean install -P release
+
+which will in turn sign and zipalign the APK.
+
+Instead of using a properties file (`sign.properties`), you may also define a Maven profile. Add a profile to your `~/.m2/settings.xml` file containing the signing informations :
+
+	<profile>
+		<id>android-release</id>
+		<properties>
+			<sign.keystore>/absolute/path/to/your/keystore</sign.keystore>
+			<sign.alias>key alias</sign.alias>
+			<sign.keypass>key password</sign.keypass>
+			<sign.storepass>keystore password</sign.storepass>
+		</properties>
+	</profile>
+
+And invoke the following command :
+
+	mvn clean install -P android-release,release
 
 ## Licensing
 Licensed under the Apache Software License, Version 2.0.
