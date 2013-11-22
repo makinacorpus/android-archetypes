@@ -9,7 +9,7 @@
 			<defaultValue>10</defaultValue>
 		</requiredProperty>
 		<requiredProperty key="targetSdkVersion">
-			<defaultValue>18</defaultValue>
+			<defaultValue>19</defaultValue>
 		</requiredProperty>
 	</requiredProperties>
 

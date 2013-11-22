@@ -10,6 +10,105 @@
 	<body>
 
 		<release
+			date="2013-11-22"
+			description="Tag 0.0.9"
+			version="0.0.9">
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="add">
+				Adding new archetype 'android-library-project'.
+			</action>
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="update">
+				Using Android Maven Plugin version 3.8.0 (requires Maven 3.1.1 or higher).
+				Set Android 4.4 (API 19) as default target platform.
+			</action>
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="remove">
+				Remove Spoon support (client library and Maven plugin) : Not compatible with Maven 3.1.x (https://github.com/square/spoon/issues/152).
+			</action>
+
+		</release>
+
+		<release
+			date="2013-11-18"
+			description="Tag 0.0.8"
+			version="0.0.8">
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="add">
+				Adding 'release' profile (sign and zipalign apk) for 'android-quickstart' and 'android-simple-project' archetypes.
+			</action>
+
+		</release>
+
+		<release
+			date="2013-11-18"
+			description="Tag 0.0.7"
+			version="0.0.7">
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="add">
+				Adding new archetype 'android-library-quickstart'.
+			</action>
+
+		</release>
+
+		<release
+			date="2013-11-15"
+			description="Tag 0.0.6"
+			version="0.0.6">
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="add">
+				Adding Spoon support (client library and Maven plugin).
+			</action>
+
+		</release>
+
+		<release
+			date="2013-11-15"
+			description="Tag 0.0.5"
+			version="0.0.5">
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="update">
+				Replace required property 'platform' by two optional properties 'minSdkVersion' and 'targetSdkVersion'.
+			</action>
+
+		</release>
+
+		<release
+			date="2013-11-14"
+			description="Tag 0.0.4"
+			version="0.0.4">
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="add">
+				Adding JUnit and Robolectric tests support.
+			</action>
+
+		</release>
+
+		<release
 			date="2013-10-14"
 			description="Tag 0.0.3"
 			version="0.0.3">
