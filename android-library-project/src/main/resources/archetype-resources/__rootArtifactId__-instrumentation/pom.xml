@@ -22,13 +22,6 @@
 			<artifactId>android</artifactId>
 			<scope>provided</scope>
 		</dependency>
-#set($Integer = 0)
-#if($Integer.parseInt($minSdkVersion) le 10)
-		<dependency>
-			<groupId>android.support</groupId>
-			<artifactId>compatibility-v4</artifactId>
-		</dependency>
-#end
 
 		<dependency>
 			<groupId>${groupId}</groupId>

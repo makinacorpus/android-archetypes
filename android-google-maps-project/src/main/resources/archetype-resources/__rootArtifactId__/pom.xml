@@ -1,0 +1,65 @@
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>${groupId}</groupId>
+		<artifactId>${rootArtifactId}-parent</artifactId>
+		<version>${version}</version>
+	</parent>
+
+	<artifactId>${artifactId}</artifactId>
+	<packaging>apk</packaging>
+	<name>${artifactId} - Application</name>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>android</groupId>
+			<artifactId>android</artifactId>
+			<scope>provided</scope>
+		</dependency>
+#set($Integer = 0)
+#if($Integer.parseInt($minSdkVersion) le 10)
+		<dependency>
+			<groupId>android.support</groupId>
+			<artifactId>compatibility-v4</artifactId>
+		</dependency>
+#end
+		<dependency>
+			<groupId>com.google.android.gms</groupId>
+			<artifactId>google-play-services</artifactId>
+			<type>apklib</type>
+		</dependency>
+		<dependency>
+			<groupId>com.google.android.gms</groupId>
+			<artifactId>google-play-services</artifactId>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>com.google.android.maps</groupId>
+			<artifactId>maps</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+				<artifactId>android-maven-plugin</artifactId>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

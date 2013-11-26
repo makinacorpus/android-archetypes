@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>com.makina.android.archetypes</groupId>
 		<artifactId>android-archetypes</artifactId>
-		<version>0.0.9</version>
+		<version>0.1.0</version>
 	</parent>
 
 	<artifactId>android-library-project</artifactId>

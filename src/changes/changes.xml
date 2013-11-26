@@ -10,6 +10,27 @@
 	<body>
 
 		<release
+			date="2013-11-26"
+			description="Tag 0.1.0"
+			version="0.1.0">
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="add">
+				Adding new archetype 'android-google-maps-project'.
+			</action>
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="fix">
+				Do not include other libraries as dependencies for instrumentation tests projects.
+			</action>
+
+		</release>
+
+		<release
 			date="2013-11-22"
 			description="Tag 0.0.9"
 			version="0.0.9">

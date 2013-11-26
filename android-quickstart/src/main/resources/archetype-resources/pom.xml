@@ -10,10 +10,11 @@
 	<packaging>apk</packaging>
 	<name>${artifactId}</name>
 
+#set($Integer = 0)
 	<properties>
 		<src.java.version>1.6</src.java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<platform.version>#if(${targetSdkVersion} eq 3)1.5_r4#elseif(${targetSdkVersion} eq 4)1.6_r3#elseif(${targetSdkVersion} eq 7)2.1_r3#elseif(${targetSdkVersion} eq 8)2.2_r3#elseif(${targetSdkVersion} eq 10)2.3.3_r2#elseif(${targetSdkVersion} eq 11)3.0_r2#elseif(${targetSdkVersion} eq 12)3.1_r3#elseif(${targetSdkVersion} eq 13)3.2_r1#elseif(${targetSdkVersion} eq 14)4.0_r3#elseif(${targetSdkVersion} eq 15)4.0.3_r3#elseif(${targetSdkVersion} eq 16)4.1.2_r4#elseif(${targetSdkVersion} eq 17)4.2.2_r2#elseif(${targetSdkVersion} eq 18)4.3_r2#elseif(${targetSdkVersion} eq 19)4.4_r1#end</platform.version>
+		<platform.version>#if($Integer.parseInt(${targetSdkVersion}) eq 3)1.5_r4#elseif($Integer.parseInt(${targetSdkVersion}) eq 4)1.6_r3#elseif($Integer.parseInt(${targetSdkVersion}) eq 7)2.1_r3#elseif($Integer.parseInt(${targetSdkVersion}) eq 8)2.2_r3#elseif($Integer.parseInt(${targetSdkVersion}) eq 10)2.3.3_r2#elseif($Integer.parseInt(${targetSdkVersion}) eq 11)3.0_r2#elseif($Integer.parseInt(${targetSdkVersion}) eq 12)3.1_r3#elseif($Integer.parseInt(${targetSdkVersion}) eq 13)3.2_r1#elseif($Integer.parseInt(${targetSdkVersion}) eq 14)4.0_r3#elseif($Integer.parseInt(${targetSdkVersion}) eq 15)4.0.3_r3#elseif($Integer.parseInt(${targetSdkVersion}) eq 16)4.1.2_r4#elseif($Integer.parseInt(${targetSdkVersion}) eq 17)4.2.2_r2#elseif($Integer.parseInt(${targetSdkVersion}) eq 18)4.3_r2#elseif($Integer.parseInt(${targetSdkVersion}) eq 19)4.4_r1#end</platform.version>
 		<android.plugin.version>3.8.0</android.plugin.version>
 	</properties>
 
@@ -25,7 +26,6 @@
 			<version>${platform.version}</version>
 			<scope>provided</scope>
 		</dependency>
-#set($Integer = 0)
 #if($Integer.parseInt($minSdkVersion) le 10)
 		<dependency>
 			<groupId>android.support</groupId>
@@ -66,7 +66,7 @@
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 				<artifactId>android-maven-plugin</artifactId>
 				<version>${android.plugin.version}</version>
-					<extensions>true</extensions>
+				<extensions>true</extensions>
 				<configuration>
 					<sdk>
 						<platform>${targetSdkVersion}</platform>

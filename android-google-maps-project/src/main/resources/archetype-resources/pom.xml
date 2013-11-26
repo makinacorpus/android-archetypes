@@ -1,0 +1,128 @@
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>${groupId}</groupId>
+	<artifactId>${artifactId}-parent</artifactId>
+	<version>${version}</version>
+	<packaging>pom</packaging>
+	<name>${artifactId} - Parent</name>
+
+	<modules>
+		<module>${rootArtifactId}</module>
+		<module>${rootArtifactId}-instrumentation</module>
+	</modules>
+
+#set($Integer = 0)
+	<properties>
+		<src.java.version>1.6</src.java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<platform.version>#if($Integer.parseInt(${targetSdkVersion}) le 10)2.3.3_r2#elseif($Integer.parseInt(${targetSdkVersion}) eq 11)3.0_r2#elseif($Integer.parseInt(${targetSdkVersion}) eq 12)3.1_r3#elseif($Integer.parseInt(${targetSdkVersion}) eq 13)3.2_r1#elseif($Integer.parseInt(${targetSdkVersion}) eq 14)4.0_r3#elseif($Integer.parseInt(${targetSdkVersion}) eq 15)4.0.3_r3#elseif($Integer.parseInt(${targetSdkVersion}) eq 16)4.1.2_r4#elseif($Integer.parseInt(${targetSdkVersion}) eq 17)4.2.2_r2#elseif($Integer.parseInt(${targetSdkVersion}) eq 18)4.3_r2#elseif($Integer.parseInt(${targetSdkVersion}) eq 19)4.4_r1#end</platform.version>
+		<googleapi.version>#if($Integer.parseInt(${targetSdkVersion}) le 10)10_r2#elseif($Integer.parseInt(${targetSdkVersion}) eq 11)11_r1#elseif($Integer.parseInt(${targetSdkVersion}) eq 12)12_r1#elseif($Integer.parseInt(${targetSdkVersion}) eq 13)13_r1#elseif($Integer.parseInt(${targetSdkVersion}) eq 14)14_r2#elseif($Integer.parseInt(${targetSdkVersion}) eq 15)15_r2#elseif($Integer.parseInt(${targetSdkVersion}) eq 16)16_r3#elseif($Integer.parseInt(${targetSdkVersion}) eq 17)17_r3#elseif($Integer.parseInt(${targetSdkVersion}) eq 18)18_r3#elseif($Integer.parseInt(${targetSdkVersion}) eq 19)19_r1#end</googleapi.version>
+		<android.plugin.version>3.8.0</android.plugin.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>android</groupId>
+				<artifactId>android</artifactId>
+				<version>${platform.version}</version>
+				<scope>provided</scope>
+			</dependency>
+#if($Integer.parseInt(${minSdkVersion}) le 10)
+			<dependency>
+				<groupId>android.support</groupId>
+				<artifactId>compatibility-v4</artifactId>
+				<version>19.0.0</version>
+			</dependency>
+#end
+			<dependency>
+				<groupId>com.google.android.gms</groupId>
+				<artifactId>google-play-services</artifactId>
+				<version>13.0.0</version>
+				<type>apklib</type>
+			</dependency>
+			<dependency>
+				<groupId>com.google.android.gms</groupId>
+				<artifactId>google-play-services</artifactId>
+				<version>13.0.0</version>
+				<type>jar</type>
+			</dependency>
+			<dependency>
+				<groupId>com.google.android.maps</groupId>
+				<artifactId>maps</artifactId>
+				<version>${googleapi.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+				<scope>test</scope>
+			</dependency>
+
+		</dependencies>
+
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>properties-maven-plugin</artifactId>
+					<version>1.0-alpha-2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jarsigner-plugin</artifactId>
+					<version>1.2</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>${src.java.version}</source>
+						<target>${src.java.version}</target>
+						<encoding>${project.build.sourceEncoding}</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+					<artifactId>android-maven-plugin</artifactId>
+					<version>${android.plugin.version}</version>
+					<extensions>true</extensions>
+					<configuration>
+						<sdk>
+							<platform>${targetSdkVersion}</platform>
+						</sdk>
+						<undeployBeforeDeploy>true</undeployBeforeDeploy>
+						<manifest>
+							<debuggable>true</debuggable>
+							<versionCodeAutoIncrement>true</versionCodeAutoIncrement>
+							<versionName>${project.version}</versionName>
+						</manifest>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>2.16</version>
+					<configuration>
+						<excludes>
+							<exclude>**/Test*.java</exclude>
+						</excludes>
+						<argLine>-Xmx1024m</argLine>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>

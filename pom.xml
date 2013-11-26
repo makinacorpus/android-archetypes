@@ -6,7 +6,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.makina.android.archetypes</groupId>
 	<artifactId>android-archetypes</artifactId>
-	<version>0.0.9</version>
+	<version>0.1.0</version>
 	<packaging>pom</packaging>
 
 	<name>Android Archetypes</name>
@@ -18,6 +18,7 @@
 		<module>android-simple-project</module>
 		<module>android-library-quickstart</module>
 		<module>android-library-project</module>
+		<module>android-google-maps-project</module>
 	</modules>
 
 	<organization>

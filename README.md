@@ -56,7 +56,7 @@ where options :
 Install [Maven](http://maven.apache.org/download.cgi) (**3.1.1 or higher is required**).
 
 ### Maven Android SDK Deployer
-Install [maven-android-sdk-deployer](https://github.com/mosabua/maven-android-sdk-deployer) :
+Install [Maven Android SDK Deployer](https://github.com/mosabua/maven-android-sdk-deployer) :
 
 	git clone https://github.com/mosabua/maven-android-sdk-deployer.git
 	cd maven-android-sdk-deployer/
@@ -79,7 +79,7 @@ To initiate this Android project :
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-quickstart \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.0.9 \
+		-DarchetypeVersion=0.1.0 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -130,7 +130,7 @@ This archetype creates a multi-module project containing the Android application
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-simple-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.0.9 \
+		-DarchetypeVersion=0.1.0 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -182,7 +182,7 @@ To initiate this Android library project :
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-library-quickstart \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.0.9 \
+		-DarchetypeVersion=0.1.0 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -217,7 +217,7 @@ This archetype may be use to develop a complete Android application using a cust
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-library-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.0.9 \
+		-DarchetypeVersion=0.1.0 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -249,6 +249,90 @@ To deploy and launch the application with Maven :
 	mvn clean install android:deploy android:run
 
 This generated project use [JUnit](https://github.com/junit-team/junit) and [Robolectric](http://robolectric.org/) as default unit test framework.
+
+## android-google-maps-project archetype
+This archetype creates a multi-module project containing the Android application using Google Maps Android library and a project for testing this application (instrumentation tests).
+
+### Before starting
+The [Google Maps Android API v2](https://developers.google.com/maps/documentation/android/?hl=fr) is distributed as part of the Google Play services SDK.
+So we need to install and configure the Google Play services SDK first.
+
+#### Android SDK
+From Android SDK, install the following packages if needed :
+
+* Android 2.2 (API 8)
+* Extras / Google Play services
+* Extras / Google Play services for Froyo
+
+Or from the command line (headless environment) :
+
+	android update sdk --no-ui --all --filter \
+		extra-google-google_play_services_froyo,\
+		extra-google-google_play_services
+
+	android update sdk --no-ui --all --filter \
+		android-8,\
+		addon-google_apis-google-8
+
+#### Maven Android SDK Deployer
+From [Maven Android SDK Deployer](https://github.com/mosabua/maven-android-sdk-deployer), install the following package :
+
+	cd maven-android-sdk-deployer/
+	mvn install -P 2.2
+	cd extras/google-play-services/
+	mvn clean install
+
+#### Eclipse
+From Eclipse, import the Google Play services library project into your workspace. Click **File > Import**, select **Android > Existing Android Code into Workspace**, and browse to the copy of the library project to import it :
+
+	<android-sdk>/extras/google/google_play_services/libproject/google-play-services_lib/
+
+References the Google Play services in your app's project only (and not the instrumentation tests project).
+See the [Referencing a Library Project for Eclipse](http://developer.android.com/tools/projects/projects-eclipse.html#ReferencingLibraryProject) for more information on how to do this.
+
+### Project initialization
+To initiate this Android project :
+
+	mvn archetype:generate \
+		-DarchetypeArtifactId=android-google-maps-project \
+		-DarchetypeGroupId=com.makina.android.archetypes \
+		-DarchetypeVersion=0.1.0 \
+		-DarchetypeCatalog=local \
+		-DarchetypeRepository=local \
+		-DgroupId=your.company \
+		-DartifactId=my-android-application \
+		-Dpackage=your.company.myapp \
+		-Dversion=0.1 \
+		-DinteractiveMode=false
+
+where properties :
+
+* `-DgroupId` : your Maven project groupId
+* `-DartifactId` : the name of your Maven project
+* `-Dversion` : the first version number of your Maven project
+
+You can define three optional properties :
+
+* `-Dpackage` : define the package used by the application (default : the given `groupId`)
+* `-DminSdkVersion` : the minimum API Level required for the application to run (default : 10, Android 2.3.3)
+* `-DtargetSdkVersion` : the targeted Android platform version to use (default : 19, Android 4.4)
+
+**Note :** This archetype is only compatible with Android API 10 or higher.
+
+Follow instructions from [https://developers.google.com/maps/documentation/android/start?hl=fr#get_an_android_certificate_and_the_google_maps_api_key](https://developers.google.com/maps/documentation/android/start?hl=fr#get_an_android_certificate_and_the_google_maps_api_key) to obtain a Google Maps API key for your application.
+
+Your application is ready to be built. Start an android emulator (**use the latest Android platform with Google API**) or plug a compatible Android dev phone ([USB debugging must be enabled in Developer options settings](http://developer.android.com/tools/device.html#setting-up)) and execute the following commands :
+
+	cd my-android-application
+	mvn clean install
+
+To deploy and launch the application with Maven :
+
+	mvn clean install android:deploy android:run
+
+To undeploy the application with Maven :
+
+	mvn android:undeploy
 
 ## Perform a release build (signed and zipaligned APK)
 **android-quickstart**, **android-simple-project** and **android-library-project** archetypes offers also a `release` profile to generate a signed and zipaligned APK.
