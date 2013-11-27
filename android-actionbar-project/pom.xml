@@ -1,0 +1,17 @@
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.makina.android.archetypes</groupId>
+		<artifactId>android-archetypes</artifactId>
+		<version>0.1.1</version>
+	</parent>
+
+	<artifactId>android-actionbar-project</artifactId>
+	<name>Android Archetype - android-actionbar-project</name>
+	<description>Creates a skeleton for an Android application with action bar support including instrumentation tests and ready-to-publish application on releases</description>
+
+</project>

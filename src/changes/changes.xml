@@ -10,6 +10,27 @@
 	<body>
 
 		<release
+			date="2013-11-27"
+			description="Tag 0.1.1"
+			version="0.1.1">
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="add">
+				Adding new archetype 'android-actionbar-project'.
+			</action>
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="add">
+				Adding maven-enforcer-plugin to check Maven version.
+			</action>
+
+		</release>
+
+		<release
 			date="2013-11-26"
 			description="Tag 0.1.0"
 			version="0.1.0">

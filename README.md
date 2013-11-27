@@ -5,6 +5,9 @@ All artifacts are based on the android-maven-plugin [http://code.google.com/p/ma
 
 ## Before starting
 
+### JDK
+Use at least Java JDK 6 from [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
+
 ### Android SDK
 Download the latest Android SDK from
 [http://developer.android.com/sdk/index.html](http://developer.android.com/sdk/index.html) and follow the instructions there.
@@ -79,7 +82,7 @@ To initiate this Android project :
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-quickstart \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.0 \
+		-DarchetypeVersion=0.1.1 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -130,7 +133,7 @@ This archetype creates a multi-module project containing the Android application
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-simple-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.0 \
+		-DarchetypeVersion=0.1.1 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -175,6 +178,45 @@ or from the parent pom (the application package name must be specified) :
 	mvn android:undeploy -Dandroid.package=your.company.myapp
 	mvn android:undeploy -Dandroid.package=your.company.myapp.test
 
+## android-actionbar-project archetype
+This archetype creates a multi-module project containing the Android application including action bar support and a project for testing this application (instrumentation tests) :
+
+	mvn archetype:generate \
+		-DarchetypeArtifactId=android-actionbar-project \
+		-DarchetypeGroupId=com.makina.android.archetypes \
+		-DarchetypeVersion=0.1.1 \
+		-DarchetypeCatalog=local \
+		-DarchetypeRepository=local \
+		-DgroupId=your.company \
+		-DartifactId=my-android-application \
+		-Dpackage=your.company.myapp \
+		-Dversion=0.1 \
+		-DinteractiveMode=false
+
+where properties :
+
+* `-DgroupId` : your Maven project groupId
+* `-DartifactId` : the name of your Maven project
+* `-Dversion` : the first version number of your Maven project
+
+You can define three optional properties :
+
+* `-Dpackage` : define the package used by the application (default : the given `groupId`)
+* `-DminSdkVersion` : the minimum API Level required for the application to run (default : 10, Android 2.3.3)
+* `-DtargetSdkVersion` : the targeted Android platform version to use (default : 19, Android 4.4)
+
+**Note :** The action bar support use [ActionBarSherlock Android library](http://actionbarsherlock.com/) only if the minimum API Level required for the application is prior to API level 11.
+
+Once generated, your application is ready to be built and tested. Start an android emulator or plug an Android dev phone ([USB debugging must be enabled in Developer options settings](http://developer.android.com/tools/device.html#setting-up)) and execute the following commands :
+
+	cd my-android-application
+	mvn clean install
+
+To deploy and launch the application with Maven :
+
+	cd my-android-application
+	mvn clean install android:deploy android:run
+
 ## android-library-quickstart archetype
 This archetype creates a simple Android library project ready to be used with another Android project application.
 To initiate this Android library project :
@@ -182,7 +224,7 @@ To initiate this Android library project :
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-library-quickstart \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.0 \
+		-DarchetypeVersion=0.1.1 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -217,7 +259,7 @@ This archetype may be use to develop a complete Android application using a cust
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-library-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.0 \
+		-DarchetypeVersion=0.1.1 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -296,7 +338,7 @@ To initiate this Android project :
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-google-maps-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.0 \
+		-DarchetypeVersion=0.1.1 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -335,7 +377,7 @@ To undeploy the application with Maven :
 	mvn android:undeploy
 
 ## Perform a release build (signed and zipaligned APK)
-**android-quickstart**, **android-simple-project** and **android-library-project** archetypes offers also a `release` profile to generate a signed and zipaligned APK.
+**android-quickstart**, **android-simple-project**, **android-actionbar-project** and **android-library-project** archetypes offers also a `release` profile to generate a signed and zipaligned APK.
 By default the application is built in "debug mode". This means the generated class constant `BuildCongig.DEBUG` and Android Manifest attribute `android:debuggable` are set to `true`.
 The APK is signed with the default debug key (`~/.android/debug.keystore`).
 
