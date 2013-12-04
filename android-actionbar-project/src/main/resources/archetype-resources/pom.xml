@@ -11,7 +11,7 @@
 	<name>${artifactId} - Parent</name>
 
 	<modules>
-		<module>${rootArtifactId}</module>
+		<module>${rootArtifactId}-app</module>
 		<module>${rootArtifactId}-instrumentation</module>
 	</modules>
 

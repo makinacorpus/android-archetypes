@@ -14,7 +14,7 @@
 	</requiredProperties>
 
 	<modules>
-		<module id="${rootArtifactId}" dir="__rootArtifactId__" name="${rootArtifactId}">
+		<module id="${rootArtifactId}-app" dir="__rootArtifactId__-app" name="${rootArtifactId}-app">
 			<fileSets>
 				<fileSet
 					filtered="true"

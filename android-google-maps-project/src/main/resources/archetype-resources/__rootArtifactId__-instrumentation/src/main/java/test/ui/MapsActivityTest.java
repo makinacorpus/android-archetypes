@@ -1,12 +1,11 @@
 package ${package}.test.ui;
 
-import your.company.gmaps.R;
-
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 
 import android.test.ActivityInstrumentationTestCase2;
 
+import ${package}.R;
 import ${package}.ui.MapsActivity;
 
 public class MapsActivityTest extends ActivityInstrumentationTestCase2<MapsActivity>

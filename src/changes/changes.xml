@@ -10,6 +10,21 @@
 	<body>
 
 		<release
+			date="2013-12-04"
+			description="Tag 0.1.2"
+			version="0.1.2">
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="fix">
+				android-library-project archetype: Missing 'test' package for lib project.
+				Adding '-app' suffix for all application project artifacts.
+			</action>
+
+		</release>
+
+		<release
 			date="2013-11-27"
 			description="Tag 0.1.1"
 			version="0.1.1">
@@ -75,7 +90,7 @@
 				dev="Sebastien Grimault"
 				due-to-email="sebastien.grimault@makina-corpus.com"
 				type="remove">
-				Remove Spoon support (client library and Maven plugin) : Not compatible with Maven 3.1.x (https://github.com/square/spoon/issues/152).
+				Remove Spoon support (client library and Maven plugin): Not compatible with Maven 3.1.x (https://github.com/square/spoon/issues/152).
 			</action>
 
 		</release>
@@ -159,7 +174,7 @@
 				dev="Sebastien Grimault"
 				due-to-email="sebastien.grimault@makina-corpus.com"
 				type="add">
-				New Maven archetype : android-simple-project.
+				New Maven archetype: android-simple-project.
 			</action>
 
 		</release>
@@ -188,7 +203,7 @@
 				due-to-email="sebastien.grimault@makina-corpus.com"
 				type="add">
 				Initial release.
-				First Android archetype : android-quickstart.
+				First Android archetype: android-quickstart.
 			</action>
 
 		</release>

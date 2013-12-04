@@ -56,7 +56,7 @@ where options :
 * `--filter`: A filter that limits the update to the specified types of packages
 
 ### Maven
-Install [Maven](http://maven.apache.org/download.cgi) (**3.1.1 or higher is required**).
+Install [Maven](http://maven.apache.org/download.cgi) (**3.1.1 or higher is required**) and set the `M2_HOME` environment variable to the location that should contain Maven.
 
 ### Maven Android SDK Deployer
 Install [Maven Android SDK Deployer](https://github.com/mosabua/maven-android-sdk-deployer) :
@@ -82,7 +82,7 @@ To initiate this Android project :
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-quickstart \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.1 \
+		-DarchetypeVersion=0.1.2 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -133,7 +133,7 @@ This archetype creates a multi-module project containing the Android application
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-simple-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.1 \
+		-DarchetypeVersion=0.1.2 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -168,7 +168,7 @@ This generated project use [JUnit](https://github.com/junit-team/junit) and [Rob
 
 To undeploy all installed applications (main application and instrumentation tests application) with Maven :
 
-	cd my-android-application
+	cd my-android-application-app
 	mvn android:undeploy
 	cd ../my-android-application-instrumentation
 	mvn android:undeploy
@@ -184,7 +184,7 @@ This archetype creates a multi-module project containing the Android application
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-actionbar-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.1 \
+		-DarchetypeVersion=0.1.2 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -224,7 +224,7 @@ To initiate this Android library project :
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-library-quickstart \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.1 \
+		-DarchetypeVersion=0.1.2 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -259,7 +259,7 @@ This archetype may be use to develop a complete Android application using a cust
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-library-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.1 \
+		-DarchetypeVersion=0.1.2 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -338,7 +338,7 @@ To initiate this Android project :
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-google-maps-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.1 \
+		-DarchetypeVersion=0.1.2 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \

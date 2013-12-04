@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Strict//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>/Users/sgrimault/workspace-android/android-archetypes/.README.md.html</title>
+
+
+<style type="text/css">
+
+.markdown-body {
+    border: 1px solid #CACACA;
+    padding: 30px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.markdown-body h2 {
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.markdown-body code {
+    white-space: nowrap;
+}
+
+.markdown-body code, .markdown-body tt {
+    background-color: #F8F8F8;
+    border: 1px solid #EAEAEA;
+    border-radius: 3px 3px 3px 3px;
+    margin: 0 2px;
+    padding: 0 5px;
+}
+
+.markdown-body .highlight pre, .markdown-body pre {
+    background-color: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+}
+
+.markdown-body img {
+    border: 0 none;
+}
+
+pre, code, tt {
+    font-family: Consolas,"Liberation Mono",Courier,monospace;
+    font-size: 12px;
+}
+</style>
+
+
+<script type="text/javascript">
+
+function getDocumentScrollTop() 
+{
+   var res = document.body.scrollTop || document.documentElement.scrollTop || window.pageYOffset || 0;
+   // alert(res);
+   return res;
+}
+
+function setDocumentScrollTop(ypos) 
+{
+	window.scrollTo(0, ypos);
+}
+
+</script>
+
+
+</head>
+<body class="markdown-body">
+<h1> <a name="android-archetypes" class="anchor" href="..md.html#android-archetypes"><span class="octicon octicon-link"></span></a>android-archetypes</h1> 
+<p>Provides Maven archetypes for Android to quickly bootstrap a Maven project and start developing an Android application.</p> 
+<p>All artifacts are based on the android-maven-plugin <a href="http://code.google.com/p/maven-android-plugin/">http://code.google.com/p/maven-android-plugin/</a>. It currently uses the 3.8.0 version.</p> 
+<h2> <a name="before-starting" class="anchor" href="..md.html#before-starting"><span class="octicon octicon-link"></span></a>Before starting</h2> 
+<h3> <a name="jdk" class="anchor" href="..md.html#jdk"><span class="octicon octicon-link"></span></a>JDK</h3> 
+<p>Use at least Java JDK 6 from <a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Oracle</a>.</p> 
+<h3> <a name="android-sdk" class="anchor" href="..md.html#android-sdk"><span class="octicon octicon-link"></span></a>Android SDK</h3> 
+<p>Download the latest Android SDK from <a href="http://developer.android.com/sdk/index.html">http://developer.android.com/sdk/index.html</a> and follow the instructions there.</p> 
+<p>From Android SDK, install at least the following packages :</p> 
+<ul> 
+ <li>Tools (all packages)</li> 
+ <li>Android 4.4 (API 19)</li> 
+ <li>Android 2.3.3 (API 10)</li> 
+ <li>Extras (all packages according to your platform)</li> 
+</ul>
+<p>Or from the command line (headless environment) :</p> 
+<pre><code>android update sdk --no-ui --all --filter \
+    tools,\
+    platform-tools,\
+    build-tools-19.0.0
+
+android update sdk --no-ui --all --filter \
+    extra-android-m2repository,\
+    extra-android-support,\
+    extra-google-admob_ads_sdk,\
+    extra-google-analytics_sdk_v2,\
+    extra-google-google_play_services_froyo,\
+    extra-google-google_play_services,\
+    extra-google-m2repository,\
+    extra-google-play_apk_expansion,\
+    extra-google-play_billing,\
+    extra-google-play_licensing,\
+    extra-google-webdriver
+
+android update sdk --no-ui --all --filter \
+    android-19,\
+    sysimg-19,\
+    addon-google_apis-google-19
+
+android update sdk --no-ui --all --filter \
+    android-10,\
+    sysimg-10,\
+    addon-google_apis-google-10
+</code></pre> 
+<p>where options :</p> 
+<ul> 
+ <li> <code>--no-ui</code> : Updates from command-line (does not display the GUI)</li> 
+ <li> <code>--all</code> : Includes all packages (such as obsolete and non-dependent ones)</li> 
+ <li> <code>--filter</code>: A filter that limits the update to the specified types of packages</li> 
+</ul>
+<h3> <a name="maven" class="anchor" href="..md.html#maven"><span class="octicon octicon-link"></span></a>Maven</h3> 
+<p>Install <a href="http://maven.apache.org/download.cgi">Maven</a> (<strong>3.1.1 or higher is required</strong>).</p> 
+<h3> <a name="maven-android-sdk-deployer" class="anchor" href="..md.html#maven-android-sdk-deployer"><span class="octicon octicon-link"></span></a>Maven Android SDK Deployer</h3> 
+<p>Install <a href="https://github.com/mosabua/maven-android-sdk-deployer">Maven Android SDK Deployer</a> :</p> 
+<pre><code>git clone https://github.com/mosabua/maven-android-sdk-deployer.git
+cd maven-android-sdk-deployer/
+mvn install -P 2.3.3
+mvn install -P 4.4
+cd extras/compatibility-v4/
+mvn clean install
+</code></pre> 
+<h2> <a name="installation" class="anchor" href="..md.html#installation"><span class="octicon octicon-link"></span></a>Installation</h2> 
+<p>Use Maven to install these archetypes in your local Maven repository :</p> 
+<pre><code>git clone https://github.com/makinacorpus/android-archetypes.git
+cd android-archetypes/
+mvn clean install
+</code></pre> 
+<h2> <a name="android-quickstart-archetype" class="anchor" href="..md.html#android-quickstart-archetype"><span class="octicon octicon-link"></span></a>android-quickstart archetype</h2> 
+<p>This archetype creates a simple Android application ready to be deployed on an Android device. To initiate this Android project :</p> 
+<pre><code>mvn archetype:generate \
+    -DarchetypeArtifactId=android-quickstart \
+    -DarchetypeGroupId=com.makina.android.archetypes \
+    -DarchetypeVersion=0.1.1 \
+    -DarchetypeCatalog=local \
+    -DarchetypeRepository=local \
+    -DgroupId=your.company \
+    -DartifactId=my-android-application \
+    -Dpackage=your.company.myapp \
+    -Dversion=0.1 \
+    -DinteractiveMode=false
+</code></pre> 
+<p>where properties :</p> 
+<ul> 
+ <li> <code>-DgroupId</code> : your Maven project groupId</li> 
+ <li> <code>-DartifactId</code> : the name of your Maven project</li> 
+ <li> <code>-Dversion</code> : the first version number of your Maven project</li> 
+</ul>
+<p>You can define three optional properties :</p> 
+<ul> 
+ <li> <code>-Dpackage</code> : define the package used by the application (default : the given <code>groupId</code>)</li> 
+ <li> <code>-DminSdkVersion</code> : the minimum API Level required for the application to run (default : 10, Android 2.3.3)</li> 
+ <li> <code>-DtargetSdkVersion</code> : the targeted Android platform version to use (default : 19, Android 4.4)</li> 
+</ul>
+<p>Once generated, your application is ready to be built. Start an android emulator or plug an Android dev phone (<a href="http://developer.android.com/tools/device.html#setting-up">USB debugging must be enabled in Developer options settings</a>) and execute the following commands :</p> 
+<pre><code>cd my-android-application
+mvn clean install
+</code></pre> 
+<p>or with Gradle :</p> 
+<pre><code>cd my-android-application
+gradle clean build
+</code></pre> 
+<p>To deploy and launch the application with Maven :</p> 
+<pre><code>mvn clean install android:deploy android:run
+</code></pre> 
+<p>or with Gradle (only deploy) :</p> 
+<pre><code>gradle installDebug
+</code></pre> 
+<p>To undeploy the application with Maven :</p> 
+<pre><code>mvn android:undeploy
+</code></pre> 
+<p>This generated project use <a href="https://github.com/junit-team/junit">JUnit</a> and <a href="http://robolectric.org/">Robolectric</a> as default unit test framework.</p> 
+<h2> <a name="android-simple-project-archetype" class="anchor" href="..md.html#android-simple-project-archetype"><span class="octicon octicon-link"></span></a>android-simple-project archetype</h2> 
+<p>This archetype creates a multi-module project containing the Android application and a project for testing this application (instrumentation tests) :</p> 
+<pre><code>mvn archetype:generate \
+    -DarchetypeArtifactId=android-simple-project \
+    -DarchetypeGroupId=com.makina.android.archetypes \
+    -DarchetypeVersion=0.1.1 \
+    -DarchetypeCatalog=local \
+    -DarchetypeRepository=local \
+    -DgroupId=your.company \
+    -DartifactId=my-android-application \
+    -Dpackage=your.company.myapp \
+    -Dversion=0.1 \
+    -DinteractiveMode=false
+</code></pre> 
+<p>where properties :</p> 
+<ul> 
+ <li> <code>-DgroupId</code> : your Maven project groupId</li> 
+ <li> <code>-DartifactId</code> : the name of your Maven project</li> 
+ <li> <code>-Dversion</code> : the first version number of your Maven project</li> 
+</ul>
+<p>You can define three optional properties :</p> 
+<ul> 
+ <li> <code>-Dpackage</code> : define the package used by the application (default : the given <code>groupId</code>)</li> 
+ <li> <code>-DminSdkVersion</code> : the minimum API Level required for the application to run (default : 10, Android 2.3.3)</li> 
+ <li> <code>-DtargetSdkVersion</code> : the targeted Android platform version to use (default : 19, Android 4.4)</li> 
+</ul>
+<p>Once generated, your application is ready to be built and tested. Start an android emulator or plug an Android dev phone (<a href="http://developer.android.com/tools/device.html#setting-up">USB debugging must be enabled in Developer options settings</a>) and execute the following commands :</p> 
+<pre><code>cd my-android-application
+mvn clean install
+</code></pre> 
+<p>To deploy and launch the application with Maven :</p> 
+<pre><code>cd my-android-application
+mvn clean install android:deploy android:run
+</code></pre> 
+<p>This generated project use <a href="https://github.com/junit-team/junit">JUnit</a> and <a href="http://robolectric.org/">Robolectric</a> as default unit test framework.</p> 
+<p>To undeploy all installed applications (main application and instrumentation tests application) with Maven :</p> 
+<pre><code>cd my-android-application
+mvn android:undeploy
+cd ../my-android-application-instrumentation
+mvn android:undeploy
+</code></pre> 
+<p>or from the parent pom (the application package name must be specified) :</p> 
+<pre><code>mvn android:undeploy -Dandroid.package=your.company.myapp
+mvn android:undeploy -Dandroid.package=your.company.myapp.test
+</code></pre> 
+<h2> <a name="android-library-quickstart-archetype" class="anchor" href="..md.html#android-library-quickstart-archetype"><span class="octicon octicon-link"></span></a>android-library-quickstart archetype</h2> 
+<p>This archetype creates a simple Android library project ready to be used with another Android project application. To initiate this Android library project :</p> 
+<pre><code>mvn archetype:generate \
+    -DarchetypeArtifactId=android-library-quickstart \
+    -DarchetypeGroupId=com.makina.android.archetypes \
+    -DarchetypeVersion=0.1.1 \
+    -DarchetypeCatalog=local \
+    -DarchetypeRepository=local \
+    -DgroupId=your.company \
+    -DartifactId=my-android-library \
+    -Dpackage=your.company.mylib \
+    -Dversion=0.1 \
+    -DinteractiveMode=false
+</code></pre> 
+<p>where properties :</p> 
+<ul> 
+ <li> <code>-DgroupId</code> : your Maven project groupId</li> 
+ <li> <code>-DartifactId</code> : the name of your Maven project</li> 
+ <li> <code>-Dversion</code> : the first version number of your Maven project</li> 
+</ul>
+<p>You can define three optional properties :</p> 
+<ul> 
+ <li> <code>-Dpackage</code> : define the package used by the library (default : the given <code>groupId</code>)</li> 
+ <li> <code>-DminSdkVersion</code> : the minimum API Level required for the library (default : 10, Android 2.3.3)</li> 
+ <li> <code>-DtargetSdkVersion</code> : the targeted Android platform version to use (default : 19, Android 4.4)</li> 
+</ul>
+<p>Once generated, your library is ready to be built :</p> 
+<pre><code>cd my-android-library
+mvn clean install
+</code></pre> 
+<p>This generated project use <a href="https://github.com/junit-team/junit">JUnit</a> and <a href="http://robolectric.org/">Robolectric</a> as default unit test framework.</p> 
+<h2> <a name="android-library-project-archetype" class="anchor" href="..md.html#android-library-project-archetype"><span class="octicon octicon-link"></span></a>android-library-project archetype</h2> 
+<p>This archetype creates a multi-module project containing the Android application, an Android library project and a project for testing this application and its library (instrumentation tests). This archetype may be use to develop a complete Android application using a custom Android library or to develop an Android library with an example application using this library :</p> 
+<pre><code>mvn archetype:generate \
+    -DarchetypeArtifactId=android-library-project \
+    -DarchetypeGroupId=com.makina.android.archetypes \
+    -DarchetypeVersion=0.1.1 \
+    -DarchetypeCatalog=local \
+    -DarchetypeRepository=local \
+    -DgroupId=your.company \
+    -DartifactId=my-android-library-project \
+    -Dpackage=your.company.mylib \
+    -Dversion=0.1 \
+    -DinteractiveMode=false
+</code></pre> 
+<p>where properties :</p> 
+<ul> 
+ <li> <code>-DgroupId</code> : your Maven project groupId</li> 
+ <li> <code>-DartifactId</code> : the name of your Maven project</li> 
+ <li> <code>-Dversion</code> : the first version number of your Maven project</li> 
+</ul>
+<p>You can define three optional properties :</p> 
+<ul> 
+ <li> <code>-Dpackage</code> : define the package used by the library (default : the given <code>groupId</code>)</li> 
+ <li> <code>-DminSdkVersion</code> : the minimum API Level required for the library (default : 10, Android 2.3.3)</li> 
+ <li> <code>-DtargetSdkVersion</code> : the targeted Android platform version to use (default : 19, Android 4.4)</li> 
+</ul>
+<p>Once generated, your application is ready to be built and tested. Start an android emulator or plug an Android dev phone (<a href="http://developer.android.com/tools/device.html#setting-up">USB debugging must be enabled in Developer options settings</a>) and execute the following commands :</p> 
+<pre><code>cd my-android-library-project
+mvn clean install
+</code></pre> 
+<p>To deploy and launch the application with Maven :</p> 
+<pre><code>cd my-android-library-project
+mvn clean install android:deploy android:run
+</code></pre> 
+<p>This generated project use <a href="https://github.com/junit-team/junit">JUnit</a> and <a href="http://robolectric.org/">Robolectric</a> as default unit test framework.</p> 
+<h2> <a name="android-google-maps-project-archetype" class="anchor" href="..md.html#android-google-maps-project-archetype"><span class="octicon octicon-link"></span></a>android-google-maps-project archetype</h2> 
+<p>This archetype creates a multi-module project containing the Android application using Google Maps Android library and a project for testing this application (instrumentation tests).</p> 
+<h3> <a name="before-starting-1" class="anchor" href="..md.html#before-starting-1"><span class="octicon octicon-link"></span></a>Before starting</h3> 
+<p>The <a href="https://developers.google.com/maps/documentation/android/?hl=fr">Google Maps Android API v2</a> is distributed as part of the Google Play services SDK. So we need to install and configure the Google Play services SDK first.</p> 
+<h4> <a name="android-sdk-1" class="anchor" href="..md.html#android-sdk-1"><span class="octicon octicon-link"></span></a>Android SDK</h4> 
+<p>From Android SDK, install the following packages if needed :</p> 
+<ul> 
+ <li>Android 2.2 (API 8)</li> 
+ <li>Extras / Google Play services</li> 
+ <li>Extras / Google Play services for Froyo</li> 
+</ul>
+<p>Or from the command line (headless environment) :</p> 
+<pre><code>android update sdk --no-ui --all --filter \
+    extra-google-google_play_services_froyo,\
+    extra-google-google_play_services
+
+android update sdk --no-ui --all --filter \
+    android-8,\
+    addon-google_apis-google-8
+</code></pre> 
+<h4> <a name="maven-android-sdk-deployer-1" class="anchor" href="..md.html#maven-android-sdk-deployer-1"><span class="octicon octicon-link"></span></a>Maven Android SDK Deployer</h4> 
+<p>From <a href="https://github.com/mosabua/maven-android-sdk-deployer">Maven Android SDK Deployer</a>, install the following package :</p> 
+<pre><code>cd maven-android-sdk-deployer/
+mvn install -P 2.2
+cd extras/google-play-services/
+mvn clean install
+</code></pre> 
+<h4> <a name="eclipse" class="anchor" href="..md.html#eclipse"><span class="octicon octicon-link"></span></a>Eclipse</h4> 
+<p>From Eclipse, import the Google Play services library project into your workspace. Click <strong>File &gt; Import</strong>, select <strong>Android &gt; Existing Android Code into Workspace</strong>, and browse to the copy of the library project to import it :</p> 
+<pre><code>&lt;android-sdk&gt;/extras/google/google_play_services/libproject/google-play-services_lib/
+</code></pre> 
+<p>References the Google Play services in your app's project only (and not the instrumentation tests project). See the <a href="http://developer.android.com/tools/projects/projects-eclipse.html#ReferencingLibraryProject">Referencing a Library Project for Eclipse</a> for more information on how to do this.</p> 
+<h3> <a name="project-initialization" class="anchor" href="..md.html#project-initialization"><span class="octicon octicon-link"></span></a>Project initialization</h3> 
+<p>To initiate this Android project :</p> 
+<pre><code>mvn archetype:generate \
+    -DarchetypeArtifactId=android-google-maps-project \
+    -DarchetypeGroupId=com.makina.android.archetypes \
+    -DarchetypeVersion=0.1.1 \
+    -DarchetypeCatalog=local \
+    -DarchetypeRepository=local \
+    -DgroupId=your.company \
+    -DartifactId=my-android-application \
+    -Dpackage=your.company.myapp \
+    -Dversion=0.1 \
+    -DinteractiveMode=false
+</code></pre> 
+<p>where properties :</p> 
+<ul> 
+ <li> <code>-DgroupId</code> : your Maven project groupId</li> 
+ <li> <code>-DartifactId</code> : the name of your Maven project</li> 
+ <li> <code>-Dversion</code> : the first version number of your Maven project</li> 
+</ul>
+<p>You can define three optional properties :</p> 
+<ul> 
+ <li> <code>-Dpackage</code> : define the package used by the application (default : the given <code>groupId</code>)</li> 
+ <li> <code>-DminSdkVersion</code> : the minimum API Level required for the application to run (default : 10, Android 2.3.3)</li> 
+ <li> <code>-DtargetSdkVersion</code> : the targeted Android platform version to use (default : 19, Android 4.4)</li> 
+</ul>
+<p><strong>Note :</strong> This archetype is only compatible with Android API 10 or higher.</p> 
+<p>Follow instructions from <a href="https://developers.google.com/maps/documentation/android/start?hl=fr#get_an_android_certificate_and_the_google_maps_api_key">https://developers.google.com/maps/documentation/android/start?hl=fr#get_an_android_certificate_and_the_google_maps_api_key</a> to obtain a Google Maps API key for your application.</p> 
+<p>Your application is ready to be built. Start an android emulator (<strong>use the latest Android platform with Google API</strong>) or plug a compatible Android dev phone (<a href="http://developer.android.com/tools/device.html#setting-up">USB debugging must be enabled in Developer options settings</a>) and execute the following commands :</p> 
+<pre><code>cd my-android-application
+mvn clean install
+</code></pre> 
+<p>To deploy and launch the application with Maven :</p> 
+<pre><code>mvn clean install android:deploy android:run
+</code></pre> 
+<p>To undeploy the application with Maven :</p> 
+<pre><code>mvn android:undeploy
+</code></pre> 
+<h2> <a name="perform-a-release-build-signed-and-zipaligned-apk" class="anchor" href="..md.html#perform-a-release-build-signed-and-zipaligned-apk"><span class="octicon octicon-link"></span></a>Perform a release build (signed and zipaligned APK)</h2> 
+<p><strong>android-quickstart</strong>, <strong>android-simple-project</strong> and <strong>android-library-project</strong> archetypes offers also a <code>release</code> profile to generate a signed and zipaligned APK. By default the application is built in &quot;debug mode&quot;. This means the generated class constant <code>BuildCongig.DEBUG</code> and Android Manifest attribute <code>android:debuggable</code> are set to <code>true</code>. The APK is signed with the default debug key (<code>~/.android/debug.keystore</code>).</p> 
+<p>A release type build would be necessary for publication of the application to the <a href="https://play.google.com/store?hl=fr">Play Store</a> and the necessary steps for it is configured. The following preparation for the execution is necessary :</p> 
+<ul> 
+ <li>Create your private key following the instructions at <a href="http://developer.android.com/tools/publishing/app-signing.html#cert">http://developer.android.com/tools/publishing/app-signing.html#cert</a> </li> 
+ <li> <p>Create a <code>sign.properties</code> file in the root folder of your application project (not the instrumentation tests project) like this :</p> <pre><code>sign.keystore=/absolute/path/to/your/keystore
+sign.alias=youralias
+sign.keypass=keypass
+sign.storepass=storepass
+</code></pre> </li> 
+</ul>
+<p>After this preparation, the release build can be invoked with the following command :</p> 
+<pre><code>mvn clean install -P release
+</code></pre> 
+<p>which will in turn sign and zipalign the APK.</p> 
+<p>Instead of using a properties file (<code>sign.properties</code>), you may also define a Maven profile. Add a profile to your <code>~/.m2/settings.xml</code> file containing the signing informations :</p> 
+<div class="highlight highlight-xml">
+ <pre><span class="nt">&lt;profile&gt;</span>
+    <span class="nt">&lt;id&gt;</span>android-release<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;properties&gt;</span>
+        <span class="nt">&lt;sign.keystore&gt;</span>/absolute/path/to/your/keystore<span class="nt">&lt;/sign.keystore&gt;</span>
+        <span class="nt">&lt;sign.alias&gt;</span>key alias<span class="nt">&lt;/sign.alias&gt;</span>
+        <span class="nt">&lt;sign.keypass&gt;</span>key password<span class="nt">&lt;/sign.keypass&gt;</span>
+        <span class="nt">&lt;sign.storepass&gt;</span>keystore password<span class="nt">&lt;/sign.storepass&gt;</span>
+    <span class="nt">&lt;/properties&gt;</span>
+<span class="nt">&lt;/profile&gt;</span>
+</pre>
+</div> 
+<p>And invoke the following command :</p> 
+<pre><code>mvn clean install -P android-release,release
+</code></pre> 
+<h2> <a name="licensing" class="anchor" href="..md.html#licensing"><span class="octicon octicon-link"></span></a>Licensing</h2> 
+<p>Licensed under the Apache Software License, Version 2.0.</p> 
+<h2> <a name="history" class="anchor" href="..md.html#history"><span class="octicon octicon-link"></span></a>History</h2> 
+<p>Inspired from <a href="https://github.com/akquinet/android-archetypes">android-archetypes Github project</a> created by <a href="http://www.akquinet.de/en.html">akquinet AG</a>.</p>
+</body>
+</html>
