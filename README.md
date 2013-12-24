@@ -1,7 +1,7 @@
 # android-archetypes
 Provides Maven archetypes for Android to quickly bootstrap a Maven project and start developing an Android application.
 
-All artifacts are based on the android-maven-plugin [http://code.google.com/p/maven-android-plugin/](http://code.google.com/p/maven-android-plugin/). It currently uses the 3.8.0 version.
+All artifacts are based on the android-maven-plugin [http://code.google.com/p/maven-android-plugin/](http://code.google.com/p/maven-android-plugin/). It currently uses the **3.8.1** version.
 
 ## Before starting
 
@@ -24,7 +24,7 @@ Or from the command line (headless environment) :
 	android update sdk --no-ui --all --filter \
 		tools,\
 		platform-tools,\
-		build-tools-19.0.0
+		build-tools-19.0.1
 
 	android update sdk --no-ui --all --filter \
 		extra-android-m2repository,\
@@ -82,7 +82,7 @@ To initiate this Android project :
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-quickstart \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.2 \
+		-DarchetypeVersion=0.1.3 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -133,7 +133,7 @@ This archetype creates a multi-module project containing the Android application
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-simple-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.2 \
+		-DarchetypeVersion=0.1.3 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -184,7 +184,7 @@ This archetype creates a multi-module project containing the Android application
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-actionbar-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.2 \
+		-DarchetypeVersion=0.1.3 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -224,7 +224,7 @@ To initiate this Android library project :
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-library-quickstart \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.2 \
+		-DarchetypeVersion=0.1.3 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -259,7 +259,7 @@ This archetype may be use to develop a complete Android application using a cust
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-library-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.2 \
+		-DarchetypeVersion=0.1.3 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \
@@ -338,7 +338,7 @@ To initiate this Android project :
 	mvn archetype:generate \
 		-DarchetypeArtifactId=android-google-maps-project \
 		-DarchetypeGroupId=com.makina.android.archetypes \
-		-DarchetypeVersion=0.1.2 \
+		-DarchetypeVersion=0.1.3 \
 		-DarchetypeCatalog=local \
 		-DarchetypeRepository=local \
 		-DgroupId=your.company \

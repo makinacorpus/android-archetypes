@@ -10,6 +10,21 @@
 	<body>
 
 		<release
+			date="2013-12-24"
+			description="Tag 0.1.3"
+			version="0.1.3">
+
+			<action
+				dev="Sebastien Grimault"
+				due-to-email="sebastien.grimault@makina-corpus.com"
+				type="update">
+				Using Android Maven Plugin version 3.8.1.
+				Update version for Android SDK, Android Library Support and Google API for API 19.
+			</action>
+
+		</release>
+
+		<release
 			date="2013-12-04"
 			description="Tag 0.1.2"
 			version="0.1.2">

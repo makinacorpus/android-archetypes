@@ -13,13 +13,13 @@ apply plugin: 'android'
 dependencies {
 #set($Integer = 0)
 #if($Integer.parseInt($minSdkVersion) le 10)
-	compile group: 'com.android.support', name: 'support-v4', version: '19.0.0'
+	compile group: 'com.android.support', name: 'support-v4', version: '19.0.+'
 #end
 }
 
 android {
 	compileSdkVersion ${targetSdkVersion}
-	buildToolsVersion '19.0.0'
+	buildToolsVersion '19.0.1'
 
 	defaultConfig {
 		versionCode 1
